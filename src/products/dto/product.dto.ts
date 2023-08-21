@@ -19,4 +19,9 @@ export class CreateProductDto {
     @IsNotEmpty()
     price: number;
 
+    @IsNumber()
+    @IsNotEmpty()
+    stock: number;
+
+
 }

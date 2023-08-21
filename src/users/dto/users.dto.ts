@@ -1,25 +1,41 @@
-import { IsNotEmpty, IsNumber,IsString, } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+    
 
-export class CreateProductDto {
-    @IsNotEmpty()
-    @IsNumber()
-    name: string;
+    export class CreateUsersDto {
+        @IsNotEmpty()
+        @IsNumber()
+        id?: number;
+         
 
-    @IsString()
-    @IsNotEmpty()
-    password: string;
+        @IsString()
+        @IsNotEmpty()
+        @MaxLength(100)
+        name: string;
 
-    @IsString()
-    @IsNotEmpty()
-    email: string;
+        @IsString()
+        @IsNotEmpty()
+        @MaxLength(300)
+        password: string;
 
-    @IsNumber()
-    @IsNotEmpty()
-    sexo: string;
 
-    @IsString()
-    @IsNotEmpty()
-   active : boolean;
-  
+        @IsString()
+        @IsNotEmpty()
+        @MaxLength(300)
+        email: string;
 
-}
+        @IsString()
+        @IsNotEmpty()
+        @MaxLength(200)
+        sexo: string;
+
+        @IsString()
+        @IsNotEmpty()
+        @MaxLength(300)
+        active:  boolean;
+
+        @IsNumber()
+        @IsNotEmpty()
+        stock: number;
+
+
+    }

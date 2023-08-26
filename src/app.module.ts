@@ -6,6 +6,8 @@ import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 import { MarcaModule } from './marcas/marcas.module';
 import { Modelo } from './marcas/entities/modelo.entity';
+import { FilesModule } from './files/files.module';
+import { Category } from './products/entities/category.entity';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { Modelo } from './marcas/entities/modelo.entity';
     UsersModule,
     MarcaModule,
     Modelo,
+    FilesModule,
+    Category,
 
    
     

@@ -8,6 +8,7 @@ import { MarcaModule } from './marcas/marcas.module';
 import { Modelo } from './marcas/entities/modelo.entity';
 import { FilesModule } from './files/files.module';
 import { Category } from './products/entities/category.entity';
+import { Proveedor } from './products/entities/proveedor.entity';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { Category } from './products/entities/category.entity';
     Modelo,
     FilesModule,
     Category,
+    Proveedor,
 
    
     

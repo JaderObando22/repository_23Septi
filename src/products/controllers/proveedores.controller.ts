@@ -9,40 +9,41 @@ import { Controller,
      } from '@nestjs/common';
 import { CreateCategoryDto,  } from '../dto/category.dto';
 import { CategoryService, } from '../services/category.service';
-import { Category } from '../entities/category.entity';
+import { CreateProveedorDto } from '../dto/proveedor.dto';
+import { ProveedorService } from '../services/proveedores.service';
 
   
   
-  @Controller('Category')
+  @Controller('proveedor')
   
-  export class CategoryController {
-   constructor(private readonly CategoryService: CategoryService) {}
+  export class ProveedorController {
+   constructor(private readonly proveedorService: ProveedorService) {}
   
    @Post()
-   async create(@Body() CategoryDto: CreateCategoryDto) {
-     return await this.CategoryService.create(CategoryDto);
+   async create(@Body() ProveedorDto: CreateProveedorDto) {
+     return await this.proveedorService.create(ProveedorDto);
    }
 
    @Get() //Este seria para encontrar todo el producto
    findAll() { //Este seria para encontrar uno
-     return this.CategoryService.findAll();
+     return this.proveedorService.findAll();
    }
-  
+ 
    @Get(':id')
    finOne( @Param('id', ParseIntPipe)  id: number) {
-     return this.CategoryService.findOne(id);
+     return this.proveedorService.findOne(id);
    }
     
    @Delete(':id')
    remove(@Param('id', ParseIntPipe) id: number) {
-    return this.CategoryService.remove(id);
+    return this.proveedorService.remove(id);
    }
   
    @Patch(':id')
    update( 
      @Param('id', ParseIntPipe) id: number,
-     @Body() createCategoryDto:CreateCategoryDto, 
+     @Body() createProveedorDto:CreateProveedorDto, 
      ) {
-       return this.CategoryService.update(id,createCategoryDto)
+       return this.proveedorService.update(id,createProveedorDto)
      }
    }

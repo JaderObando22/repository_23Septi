@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Users } from '../../users/entities/users.entity';
 import { Category } from './category.entity';
+import { Proveedor } from './proveedor.entity';
 
 @Entity()
 export class Product {
@@ -31,14 +32,31 @@ export class Product {
     @Column({ type: 'varchar', nullable: true })
     categoria_id: string;
 
+    @Column({ type: 'varchar', nullable: true })
+    proveedor_id: string;
+
     //relaciones
 
-    @ManyToOne(() => Category)
+    @ManyToOne(() => Users)
     @JoinColumn({
     name: 'user_id', //el campo que relaciona a mi tabla
     referencedColumnName: 'id' //este es el ide del usuario
    })
-    autor: Category;
+    autor: Users;
+
+    @ManyToOne(() => Category)
+    @JoinColumn({
+    name: 'categoria_id', //el campo que relaciona a mi tabla
+    referencedColumnName: 'id' //este es el ide del usuario
+   })
+    categoria: Category;
+
+    @ManyToOne(() => Proveedor)
+    @JoinColumn({
+    name: 'proveedor_id', //el campo que relaciona a mi tabla
+    referencedColumnName: 'id' //este es el ide del usuario
+   })
+    proveedor: Proveedor;
 
 
 

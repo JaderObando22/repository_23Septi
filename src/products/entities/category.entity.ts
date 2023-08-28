@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn,  } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn,  } from 'typeorm';
 import { CreateCategoryDto, } from '../dto/category.dto';
+import { Users } from 'src/users/entities/users.entity';
 
 
 @Entity()
@@ -13,16 +14,17 @@ export class Category  {
     @Column({ type: 'varchar', nullable: false })
     categoria: string;
 
-    @Column({ type: 'int4', nullable: false })
-    created_at: Date;
+    @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP '})
+    created_at: Date
+
 
     //relaciones
 
-    @ManyToOne(() => Category)
+    @ManyToOne(() => Users)
     @JoinColumn({
     name: 'user_id', //el campo que relaciona a mi tabla
     referencedColumnName: 'id' //este es el id del usuario
    })
-    autor: Category;
+    autor: Users;
     
 }

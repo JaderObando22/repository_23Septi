@@ -9,6 +9,7 @@ import { Modelo } from './marcas/entities/modelo.entity';
 import { FilesModule } from './files/files.module';
 import { Category } from './products/entities/category.entity';
 import { Proveedor } from './products/entities/proveedor.entity';
+import { FilesPDFModule } from './filesPDF/filesPDF.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { Proveedor } from './products/entities/proveedor.entity';
     FilesModule,
     Category,
     Proveedor,
+    FilesPDFModule,
 
    
     

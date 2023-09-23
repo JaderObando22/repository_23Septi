@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Users } from '../../users/entities/users.entity';
 import { Category } from './category.entity';
 import { Proveedor } from './proveedor.entity';
+import { ProductImage } from './product-image.entity';
 
 @Entity()
 export class Product {
@@ -19,9 +20,6 @@ export class Product {
 
     @Column({ type: 'int4', nullable: false})
     stock: number;  
-
-    @Column({ type: 'int4', nullable: false})
-    Users_id: number;
 
     @Column({ type: 'varchar', nullable: true })
     filename: string;
@@ -58,6 +56,13 @@ export class Product {
    })
     proveedor: Proveedor;
 
+
+    // un producto puede tener muchas imagenes
+    @OneToMany(() => ProductImage, (productImage) => productImage.product, {
+        cascade: true
+    })
+
+    images?: ProductImage[];
 
 
     

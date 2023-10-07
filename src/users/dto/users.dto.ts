@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength } from 'class-validator';
     
 
     export class CreateUsersDto {
@@ -36,6 +36,11 @@ import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
         @IsNumber()
         @IsNotEmpty()
         stock: number;
+
+        @IsArray( {each: true })
+        @IsString()
+        @IsOptional()
+        images?: string[];
 
 
     }
